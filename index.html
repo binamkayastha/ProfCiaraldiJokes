@@ -1,56 +1,80 @@
 <head>
-    <title>Prof Ciaraldi Jokes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <title>Prof Ciaraldi Jokes</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+  />
 </head>
 
 <body>
-  <br>
-  <div id="vid-wrapper" class="center">
-  </div>
-  <br>
+  <br />
+  <div id="vid-wrapper" class="center"></div>
+  <br />
   <div class="center">
-      <button class="waves-effect waves-light btn blue" onclick="getRandom()">Gimme a Joke!</button>
-      <br><br>
-      Created by Binam Kayastha
+    <button class="waves-effect waves-light btn blue" onclick="getRandom()">
+      Gimme a Joke!
+    </button>
+    <br /><br />
+    Created by Binam Kayastha
   </div>
 
   <script>
-      var filenames = ["good.mp4", "applase.mp4", "movement.mp4", "travel.mp4",
-        "weed.mp4", "medal.mp4", "revolution.mp4", "pain.mp4", "grey.mp4", "odds.mp4",
-        "private.mp4", "paws.mp4", "sprouts.mp4", "mass.mp4", "singularity.mp4",
-        "blunder.mp4", "contained.mp4", "blurry.mp4"]
+    var filenames = [
+      "good.mp4",
+      "applase.mp4",
+      "movement.mp4",
+      "travel.mp4",
+      "weed.mp4",
+      "medal.mp4",
+      "revolution.mp4",
+      "pain.mp4",
+      "grey.mp4",
+      "odds.mp4",
+      "private.mp4",
+      "paws.mp4",
+      "sprouts.mp4",
+      "mass.mp4",
+      "blunder.mp4",
+      "contained.mp4",
+      "blurry.mp4",
+    ];
 
-      function getFilename() {
-          if(filenames.length == 0) {
-              return undefined;
-          }
-          // Bug get's 1 less video than available
-          randomIndex = Math.floor(Math.random()*filenames.length);
-          finalString = "final_videos/" + filenames[randomIndex];
-          filenames.splice(randomIndex, 1);
-          return finalString;
+    function getFilename() {
+      if (filenames.length == 0) {
+        return undefined;
       }
+      // Bug get's 1 less video than available
+      randomIndex = Math.floor(Math.random() * filenames.length);
+      finalString = "final_videos/" + filenames[randomIndex];
+      filenames.splice(randomIndex, 1);
+      return finalString;
+    }
 
-      var video_string = 
+    var video_string =
       `<video id="video" width="640px" height="350px" autoplay="autoplay" controls="controls">
-          <source src="` + getFilename() + `" type="video/mp4">
+          <source src="` +
+      getFilename() +
+      `" type="video/mp4">
           Your browser does not support the video tag.
       </video>`;
 
-      window.onload = function loader() {
-          document.getElementById("vid-wrapper").innerHTML = video_string;
-      }
+    window.onload = function loader() {
+      document.getElementById("vid-wrapper").innerHTML = video_string;
+    };
 
-      function getRandom() {
-          filename = getFilename()
-          if(filename == undefined) {
-              document.getElementById("vid-wrapper").innerHTML = "LoL no more videos :(<br>Send a Prof Ciaraldi video clip to bkayastha AT wpi DOT edu to fill the empty void you're feeling!"
-              return;
-          }
-          document.getElementById("vid-wrapper").innerHTML = 
-            `<video id="video" width="640px" height="350px" autoplay="autoplay" controls="controls">
-          <source src="` + filename + `" type="video/mp4">
-          Your browser does not support the video tag.`;
+    function getRandom() {
+      filename = getFilename();
+      if (filename == undefined) {
+        document.getElementById("vid-wrapper").innerHTML =
+          "LoL no more videos :(<br>Send a Prof Ciaraldi video clip to bkayastha AT wpi DOT edu to fill the empty void you're feeling!";
+        return;
       }
+      document.getElementById("vid-wrapper").innerHTML =
+        `<video id="video" width="640px" height="350px" autoplay="autoplay" controls="controls">
+          <source src="` +
+        filename +
+        `" type="video/mp4">
+          Your browser does not support the video tag.`;
+    }
   </script>
 </body>
